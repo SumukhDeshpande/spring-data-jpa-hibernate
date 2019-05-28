@@ -8,19 +8,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.springdatajpa.entity.Student;
+import com.springdatajpa.entity.Course;
 
 @Repository
 @Transactional
-public class StudentRepository {
+public class CourseRepository {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@PersistenceContext
-	private EntityManager entityManager;
+	EntityManager entityManager;
 
-	public Student findById(Long id) {
-		return entityManager.find(Student.class, id);
+	public Course findById(Long id) {
+		return entityManager.find(Course.class, id);
 	}
 
 }

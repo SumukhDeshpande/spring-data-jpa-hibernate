@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springdatajpa.entity.Course;
 import com.springdatajpa.entity.Person;
 import com.springdatajpa.entity.Student;
+import com.springdatajpa.repositories.CourseRepository;
+import com.springdatajpa.repositories.CourseSpringDataRepository;
 import com.springdatajpa.repositories.PersonRepository;
 import com.springdatajpa.repositories.StudentRepository;
 
@@ -23,6 +25,12 @@ public class RepositoryTestController {
 	
 	@Autowired
 	private StudentRepository studentRepository;
+	
+	@Autowired
+	private CourseRepository courseRepository;
+	
+	@Autowired
+	private CourseSpringDataRepository courseSpringDataRepository;
 	
 	@GetMapping("/testMapping")
 	public String testMapping() {
@@ -55,5 +63,17 @@ public class RepositoryTestController {
 	public Student findStudentById(@PathVariable Long id){
 		return studentRepository.findById(id);
 	}
+	
+	@GetMapping("/course/{id}")
+	public Course findCourseById(@PathVariable Long id) {
+		return courseRepository.findById(id);
+	}
+	
+	@GetMapping("/coursejpa/{id}")
+	public Course findCourseByIdJpa(@PathVariable Long id) {
+		return courseSpringDataRepository.findById(id).get();
+	}
+	
+	
 
 }
