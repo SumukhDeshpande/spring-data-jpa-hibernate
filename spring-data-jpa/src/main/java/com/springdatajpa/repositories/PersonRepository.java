@@ -23,7 +23,7 @@ public class PersonRepository {
 	}
 
 	public void savePerson(Person p) {
-		entityManager.merge(p);
+		entityManager.persist(p);
 	}
 	
 	public List<Person> findAllPersons(){
@@ -38,6 +38,6 @@ public class PersonRepository {
 		personToUpdate.setBirthDate(person.getBirthDate());
 		personToUpdate.setLocation(person.getLocation());
 		personToUpdate.setName(person.getName());
-		entityManager.persist(personToUpdate);
+		entityManager.merge(personToUpdate);
 	}
 }

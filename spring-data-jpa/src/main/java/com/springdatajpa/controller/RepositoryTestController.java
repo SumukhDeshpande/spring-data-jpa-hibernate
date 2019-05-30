@@ -74,6 +74,9 @@ public class RepositoryTestController {
 		return courseSpringDataRepository.findById(id).get();
 	}
 	
-	
+	@GetMapping("/courselike/{name}")
+	public Course findCourseByNameJpa(@PathVariable String name) {
+		return courseSpringDataRepository.findByNameLike(name);
+	}
 
 }
